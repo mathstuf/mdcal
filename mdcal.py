@@ -26,9 +26,9 @@ def create_calendar(year, month, with_isoweek=False, start_from_Sun=False, lang=
         if with_isoweek:
             isoweek = days[0].isocalendar()[1]
             mdstr += '|' + str(isoweek) + '|' + \
-                '|'.join([str(d.day) for d in days]) + '|' + '\n'
+                '|'.join([str(d.day) if d.year == year else '' for d in days]) + '|' + '\n'
         else:
-            mdstr += '|' + '|'.join([str(d.day) for d in days]) + '|' + '\n'
+            mdstr += '|' + '|'.join([str(d.day) if d.month == month else '' for d in days]) + '|' + '\n'
 
     return mdstr
 
